@@ -24,11 +24,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Entities\" />
     <None Remove="Data\" />
+    <None Remove="Controllers\" />
+    <None Remove="Repositories\" />
+    <None Remove="Models\" />
+    <None Remove="Models\Entities\" />
+    <None Remove="Models\DTO\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Data\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Entities\" />
+    <Folder Include="Models\DTO\" />
   </ItemGroup>
 </Project>
