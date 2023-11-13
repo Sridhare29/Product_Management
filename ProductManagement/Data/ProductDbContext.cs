@@ -16,6 +16,7 @@ namespace ProductManagement.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             var categories = new List<Category>()
             {
                 new Category

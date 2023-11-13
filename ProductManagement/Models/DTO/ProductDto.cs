@@ -15,7 +15,8 @@ namespace ProductManagement.Models.DTO
 
         public decimal Price { get; set; }
 
-        public Guid CategoryId { get; set; }
+
+        public CategoryDto Category { get; set; }
     }
 }
 

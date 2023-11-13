@@ -13,6 +13,17 @@ namespace ProductManagement.Repositories
             this._dbContext = dbContext;
 		}
 
+        public async Task<List<Product>> GetAllAsync()
+        {
+            return await _dbContext.products.Include("Category").ToListAsync();
+
+        }
+
+        public async Task<Product> GetByIdAsync(Guid id)
+        {
+            return await _dbContext.products.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task<Product> CreateAsync(Product product)
         {
             await _dbContext.products.AddAsync(product);
@@ -34,16 +45,6 @@ namespace ProductManagement.Repositories
             return existingProduct;
         }
 
-        public async Task<List<Product>> GetAllAync()
-        {
-            return await _dbContext.products.ToListAsync();
-
-        }
-
-        public async Task<Product> GetByIdAsync(Guid id)
-        {
-            return await _dbContext.products.FirstOrDefaultAsync(x => x.Id == id);
-        }
 
         public async Task<Product?> UpdateAsync(Guid id, Product product)
         {

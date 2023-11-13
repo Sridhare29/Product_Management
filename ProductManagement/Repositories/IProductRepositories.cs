@@ -5,7 +5,7 @@ namespace ProductManagement.Repositories
 {
 	public interface IProductRepositories
 	{
-        Task<List<Product>> GetAllAync();
+        Task<List<Product>> GetAllAsync();
 
         Task<Product?> GetByIdAsync(Guid id);
 
