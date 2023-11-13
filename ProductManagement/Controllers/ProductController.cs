@@ -58,29 +58,43 @@ namespace ProductManagement.Controllers
         [Route("Create")]
         public async Task<IActionResult> Create([FromBody] AddProductRequestDto addProductRequestDto)
         {
-            //Map Dto to Entity
-            var productDomainModel = _mapper.Map<Product>(addProductRequestDto);
+            if (ModelState.IsValid)
+            {
+                //Map Dto to Entity
+                var productDomainModel = _mapper.Map<Product>(addProductRequestDto);
 
-            await _productRepositories.CreateAsync(productDomainModel);
+                await _productRepositories.CreateAsync(productDomainModel);
 
-            //Map Entity to Dto
-            return Ok(_mapper.Map<ProductDto>(productDomainModel));
+                //Map Entity to Dto
+                return Ok(_mapper.Map<ProductDto>(productDomainModel));
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         [HttpPut]
         [Route("Update/{id:Guid}")]
         public async Task<IActionResult> update([FromRoute] Guid id, UpdateProductRequestDto updateProductRequestDto)
         {
-            var productDomainModel = _mapper.Map<Product>(updateProductRequestDto);
-
-            productDomainModel = await _productRepositories.UpdateAsync(id, productDomainModel);
-
-            if (productDomainModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
+                var productDomainModel = _mapper.Map<Product>(updateProductRequestDto);
 
-            return Ok(_mapper.Map<ProductDto>(productDomainModel));
+                productDomainModel = await _productRepositories.UpdateAsync(id, productDomainModel);
+
+                if (productDomainModel == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(_mapper.Map<ProductDto>(productDomainModel));
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         [HttpDelete]
