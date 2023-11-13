@@ -9,9 +9,9 @@ namespace ProductManagement.Mappings
 	{
 		public AutoMapperProfile()
 		{
-			CreateMap<AddProductRequestDto, Product>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();
-
+            CreateMap<AddProductRequestDto, Product>().ReverseMap();
+            CreateMap<UpdateProductRequestDto, Product>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
         }
 	}
