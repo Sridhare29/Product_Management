@@ -33,7 +33,6 @@ namespace ProductManagement.Controllers
         {
             var productDomainModel = await _productRepositories.GetAllAsync();
 
-            //Map Entities to Dto
             return Ok(_mapper.Map<List<ProductDto>>(productDomainModel));
           
         }
@@ -50,7 +49,6 @@ namespace ProductManagement.Controllers
                 return NotFound();
             }
 
-            // Map Entity to Dto
             return Ok(_mapper.Map<ProductDto>(productDomainModel));
         }
 
@@ -60,12 +58,10 @@ namespace ProductManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Map Dto to Entity
                 var productDomainModel = _mapper.Map<Product>(addProductRequestDto);
 
                 await _productRepositories.CreateAsync(productDomainModel);
 
-                //Map Entity to Dto
                 return Ok(_mapper.Map<ProductDto>(productDomainModel));
             }
             else
@@ -98,7 +94,7 @@ namespace ProductManagement.Controllers
         }
 
         [HttpDelete]
-        [Route("{id:Guid}")]
+        [Route("Delete/{id:Guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             var productDomainModel = await _productRepositories.DeleteAsync(id);
