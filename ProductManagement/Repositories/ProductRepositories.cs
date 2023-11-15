@@ -16,7 +16,6 @@ namespace ProductManagement.Repositories
         public async Task<List<Product>> GetAllAsync()
         {
             return await _dbContext.products.Include("Category").ToListAsync();
-
         }
 
         public async Task<Product> GetByIdAsync(Guid id)

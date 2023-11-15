@@ -26,6 +26,7 @@
     <PackageReference Include="Serilog" Version="3.1.1" />
     <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" />
+    <PackageReference Include="Microsoft.CodeCoverage" Version="17.8.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,17 +34,17 @@
     <None Remove="Controllers\" />
     <None Remove="Repositories\" />
     <None Remove="Models\" />
-    <None Remove="Models\Entities\" />
     <None Remove="Models\DTO\" />
     <None Remove="Mappings\" />
+    <None Remove="Entities\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Repositories\" />
     <Folder Include="Models\" />
-    <Folder Include="Models\Entities\" />
     <Folder Include="Models\DTO\" />
     <Folder Include="Mappings\" />
+    <Folder Include="Entities\" />
   </ItemGroup>
 </Project>
