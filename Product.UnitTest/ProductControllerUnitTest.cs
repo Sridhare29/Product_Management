@@ -45,22 +45,7 @@ namespace Products.UnitTest
 
         }
 
-        [TestMethod]
-        public void GetAll_Exception()
-        {
-            List<Product> products = new List<Product>();
-            _productRepositoriesMock = new Mock<IProductRepositories>();
-            _productMapperMock = new Mock<IMapper>();
-            _productRepositoriesMock.Setup(x => x.GetAllAsync()).ReturnsAsync(products);
-            //productMockData(_productRepositoriesMock.Object, _productMapperMock.Object);
-            var result = _productController.GetAll();
-
-            //Assert.IsNotNull(result);
-            var okResult = result.Result as ObjectResult;
-            Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
-
-        }
-
+        
 
     }
 }

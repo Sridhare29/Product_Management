@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sridharelumalai/Projects/Product/ProductManagement/ProductManagement.csproj": {}
+    "/Users/sridharelumalai/Project/freelance/Product_Management/ProductManagement/ProductManagement.csproj": {}
   },
   "projects": {
-    "/Users/sridharelumalai/Projects/Product/ProductManagement/ProductManagement.csproj": {
+    "/Users/sridharelumalai/Project/freelance/Product_Management/ProductManagement/ProductManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sridharelumalai/Projects/Product/ProductManagement/ProductManagement.csproj",
+        "projectUniqueName": "/Users/sridharelumalai/Project/freelance/Product_Management/ProductManagement/ProductManagement.csproj",
         "projectName": "ProductManagement",
-        "projectPath": "/Users/sridharelumalai/Projects/Product/ProductManagement/ProductManagement.csproj",
+        "projectPath": "/Users/sridharelumalai/Project/freelance/Product_Management/ProductManagement/ProductManagement.csproj",
         "packagesPath": "/Users/sridharelumalai/.nuget/packages/",
-        "outputPath": "/Users/sridharelumalai/Projects/Product/ProductManagement/obj/",
+        "outputPath": "/Users/sridharelumalai/Project/freelance/Product_Management/ProductManagement/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/sridharelumalai/.nuget/NuGet/NuGet.Config"
@@ -40,9 +40,53 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.13, )"
+            },
+            "Microsoft.CodeCoverage": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
