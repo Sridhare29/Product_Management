@@ -50,7 +50,7 @@ namespace Products.UnitTest
         [TestMethod]
         public void GetById_Success()
         {
-            Guid Id = Guid.Parse("106ca5a2-4cf1-48cc-06d5-08dbe3a83d27");
+            Guid productId = Guid.NewGuid();
             Product product = new Product()
             {
                 Id = Guid.Parse("106ca5a2-4cf1-48cc-06d5-08dbe3a83d27"),
@@ -65,24 +65,28 @@ namespace Products.UnitTest
             _productRepositoriesMock.Setup(x => x.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync(product);
             productMockData(_productRepositoriesMock.Object, _productMapperMock.Object);
 
-            var result = _productController.GetById(Id);
+            var result = _productController.GetById(productId);
 
             var okResult = result.Result as OkObjectResult;
             Assert.AreEqual(200, okResult?.StatusCode);
         }
 
         [TestMethod]
-        public void GetById_Null()
+        public async Task GetById_Null()
         {
             Guid productId = Guid.NewGuid();
             _productRepositoriesMock = new Mock<IProductRepositories>();
             _productMapperMock = new Mock<IMapper>();
 
             _productRepositoriesMock.Setup(repo => repo.GetByIdAsync(productId)).ReturnsAsync((Product?)null);
+            productMockData(_productRepositoriesMock.Object, _productMapperMock.Object);
+            var result = await _productController.GetById(productId);
 
-            var result = _productController.GetById(productId);
 
-            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
+            var notFoundResult = result as NotFoundResult;
+            Assert.IsNotNull(notFoundResult);
+            Assert.AreEqual(404, notFoundResult.StatusCode);
+
 
         }
 
@@ -119,7 +123,7 @@ namespace Products.UnitTest
         }
 
         [TestMethod]
-        public void Post_Invalid()
+        public async Task Post_Invalid()
         {
             AddProductRequestDto addProductRequestDto = new AddProductRequestDto()
             {
@@ -143,10 +147,12 @@ namespace Products.UnitTest
             _productRepositoriesMock.Setup(x => x.CreateAsync(It.IsAny<Product>())).ReturnsAsync(product);
             productMockData(_productRepositoriesMock.Object, _productMapperMock.Object);
 
-            var result = _productController.Create(addProductRequestDto);
+            var result = await _productController.Create(addProductRequestDto);
 
-            var okResult = result.Result as ObjectResult;
-            Assert.AreEqual(200, okResult?.StatusCode);
+            var notFoundResult = result as NotFoundResult;
+            Assert.IsNotNull(notFoundResult);
+            Assert.AreEqual(404, notFoundResult.StatusCode);
+
 
         }
 
